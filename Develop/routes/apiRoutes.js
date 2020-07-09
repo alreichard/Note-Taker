@@ -20,17 +20,19 @@ router.delete("/notes/:id", function (req, res) {
    
     var chosen = req.params.id;
     console.log(chosen)
-    console.log(parseNotes[2].id)
+    console.log(parseNotes)
    
     for (var i = 0; i < parseNotes.length; i++) {
-        if (chosen === parseNotes.id) {
+        if (chosen === parseNotes[i].id) {
             parseNotes = parseNotes.splice(i, 1)
-        
-            fs.writeFile("../db/db.json", parseNotes)
-            return res.json(parseNotes[i]);
+            console.log(parseNotes)
+            console.log(parseNotes)
+            fs.writeFile(path.join(__dirname, "../db/db.json", (parseNotes)))
+            
         }
     }
-    return res.json(false);
+    //return res.json(false);
+    return res.json(parseNotes[i]);
 });
 router.post("/notes", function (req, res) {
    
